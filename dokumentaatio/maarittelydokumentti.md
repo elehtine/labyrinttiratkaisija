@@ -10,6 +10,7 @@ Tarkoitus on toteuttaa ainakin algoritmit ilman labyrintin tuntemusta:
  - seinän seuraaminen
  - satunnainen liikkuminen
  - Tremauxin menetelmä
+ 
 ja algoritmit labyrintin tuntemalla:
  - leveyshaku
  - leveyshaku jollakin heuristiikalla
