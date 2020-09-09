@@ -1,16 +1,16 @@
 # Määrittelydokumentti
 
-Työni koodi ja dokumentaatio on suomeksi. Git commitit on englanniksi. Opinto-ohjelmani on tietojenkäsittelytieteen kandidaatti (TKT).
+Työni koodi ja dokumentaatio on suomeksi. Versionhallinta on englanniksi. Opinto-ohjelmani on tietojenkäsittelytieteen kandidaatti (TKT).
 
 ## Kuvaus
-Työni käsittelee labyrinttien ratkaisuja. Tarkoitus on ratkaista sekä labyrinttejä jossa tietää vaan reitit joissa on käynyt, sekä labyrintteja joista tietää kaikki reitit.
+Työni käsittelee labyrinttien ratkaisuja. Tarkoitus on ratkaista sekä labyrinttejä jossa tietää vaan reitit joissa on käynyt, sekä labyrintteja joista tietää kaikki reitit. Teen jonkin UI:n jolla yritän havainnollistaa miten labyrintti ratkaistaan tietyllä tavalla.
 
 # Algoritmit
-Tarkoitus on toteuttaa ainakin algoritmit ilman labyrintin tuntemusta:
+Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista ilman labyrintin tuntemusta:
  - seinän seuraaminen
  - satunnainen liikkuminen
  - Tremauxin menetelmä
-ja algoritmit labyrintin tuntemalla:
+ja algoritmeista labyrintin tuntemalla:
  - leveyshaku
  - leveyshaku jollakin heuristiikalla
  - umpikujien täyttö
