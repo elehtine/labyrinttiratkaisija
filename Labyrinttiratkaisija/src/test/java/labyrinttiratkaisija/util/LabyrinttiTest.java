@@ -11,9 +11,12 @@ import java.nio.file.Paths;
 import labyrinttiratkaisija.util.Ratkaisija;
 import labyrinttiratkaisija.util.Labyrintti;
 
+/**
+ * Yksikkotesteja labyrinttien tiedostosta lukevalle luokalle
+ */
 public class LabyrinttiTest {
     /**
-     * Lue onnistuneesti labyrintti tiedostosta
+     * Onnistuneesti lue labyrintti tiedostosta
      */
     @Test
     public void lueLabyrinttiTiedostosta() {
@@ -22,7 +25,7 @@ public class LabyrinttiTest {
     }
 
     /**
-     * Lue epaonnistuneesti vaarassa formaatissa oleva labyrintti
+     * Epaonnistuneesti lue vaarassa formaatissa oleva labyrintti
      */
     @Test
     public void lueLabyrinttiVaarassaFormaatissa() {
@@ -31,7 +34,7 @@ public class LabyrinttiTest {
     }
 
     /**
-     * Lue epaonnistuneesti labyrintti tiedostosta jota ei ole
+     * Epaonnistuneesti lue labyrintti tiedostosta jota ei ole
      */
     @Test
     public void lueLabyrinttiOlemattomastaTiedostosta() {

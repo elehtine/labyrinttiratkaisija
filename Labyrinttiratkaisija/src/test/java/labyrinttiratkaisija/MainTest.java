@@ -5,14 +5,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Yksikkotesti main luokalle
  */
 public class MainTest {
     /**
-     * Rigorous Test :-)
+     * Turha testi
      */
     @Test
-    public void shouldAnswerWithTrue() {
+    public void palauttaaTrue() {
         assertTrue(true);
     }
 }

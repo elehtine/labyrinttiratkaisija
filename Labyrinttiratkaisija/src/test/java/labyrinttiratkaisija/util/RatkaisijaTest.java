@@ -6,15 +6,15 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import java.util.Scanner;
-import java.nio.file.Paths;
-
 import labyrinttiratkaisija.util.Ratkaisija;
 import labyrinttiratkaisija.util.Labyrintti;
 
+/**
+ * Yksikkotesteja labyrintin ratkaisuntarkastaja luokalle
+ */
 public class RatkaisijaTest {
     /**
-     * Yhden ruudun liikkumista vasemmalle lahdosta maaliin
+     * Yhden ruudun liikkuminenvasemmalle lahdosta maaliin
      */
     @Test
     public void yksiVasemmalle() {
@@ -24,7 +24,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Yhden ruudun liikkumista oikealle lahdosta kun maali olisikin vasemmalla
+     * Yhden ruudun liikkuminen oikealle lahdosta kun maali olisikin vasemmalla
      */
     @Test
     public void yksiVasemmalleEpaonnistuu() {
@@ -34,7 +34,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Lyhyen labyrintin ratkaisu oikein
+     * Lyhyen labyrintin ratkaiseminen oikein
      */
     @Test
     public void lyhytLabyrintti() {
@@ -44,7 +44,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Lyhyessa labyrintissa liikkumista mutta ei maaliin asti
+     * Lyhyessa labyrintissa liikkuminen mutta ei maaliin asti
      */
     @Test
     public void lyhytLabyrinttiEiMaaliin() {
@@ -64,7 +64,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Spiraalilabyrintin ratkaisu
+     * Spiraalilabyrintin ratkaiseminen
      */
     @Test
     public void spiraaliLabyrintti() {
@@ -76,7 +76,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Olemattoman labyrintin ratkaisu palauttaa false
+     * Olemattoman labyrintin ratkaiseminen palauttaa false
      */
     @Test
     public void olematonLabyrinttiEpaonnistuu() {
@@ -84,7 +84,7 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Liikkuminen labyrintissa jossai ei ole maalia
+     * Liikkuminen labyrintissa jossa ei ole maalia
      */
     @Test
     public void labyrinttiEiMaalia() {
@@ -92,5 +92,6 @@ public class RatkaisijaTest {
         assertFalse(labyrintti == null);
         assertFalse(Ratkaisija.ratkaise("VASEN", labyrintti));
     }
+
 }
 
