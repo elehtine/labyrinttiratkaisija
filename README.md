@@ -4,6 +4,15 @@ Projekti on tehty Helsingin yliopiston kurssia _Aineopintojen harjoitustyö: Tie
 
 Projekti on tehty Javalla ja siinä on käytössä Maven.
 
+## Komennot
+Testit saa suoritettua komennolla ```mvn test```
+
+Javadocin saa generoitua komennolla ```mvn javadoc:javadoc```
+
+Testikattavuuden saa komennolla ```mvn test jacoco:report```
+
+Checkstylen saa tarkistettua komennolla ```mvn jxr:jxr checkstyle:checkstyle```
+
 ## Dokumentaatio 
 
 Määrittelydokumentti on tiedostossa [maarittelydokumentti.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/maarittelydokumentti.md).
