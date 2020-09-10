@@ -93,5 +93,25 @@ public class RatkaisijaTest {
         assertFalse(Ratkaisija.ratkaise("VASEN", labyrintti));
     }
 
+    /**
+     * Labyrintti jossa on 2 lahtoa
+     */
+    @Test
+    public void labyrinttiKaksiLahtoa() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiLahtoa.txt");
+        assertFalse(labyrintti == null);
+        assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+    }
+
+    /**
+     * Labyrintti jossa no 2 maalia
+     */
+    @Test
+    public void labyrinttiKaksiMaalia() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiMaalia.txt");
+        assertFalse(labyrintti == null);
+        assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+    }
+
 }
 
