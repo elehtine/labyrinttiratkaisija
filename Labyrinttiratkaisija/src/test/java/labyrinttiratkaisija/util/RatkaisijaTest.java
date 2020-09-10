@@ -82,5 +82,15 @@ public class RatkaisijaTest {
     public void olematonLabyrinttiEpaonnistuu() {
         assertFalse(Ratkaisija.ratkaise("OIKEA ALAS OIKEA YLOS", null));
     }
+
+    /**
+     * Liikkuminen labyrintissa jossai ei ole maalia
+     */
+    @Test
+    public void labyrinttiEiMaalia() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiEiMaalia.txt");
+        assertFalse(labyrintti == null);
+        assertFalse(Ratkaisija.ratkaise("VASEN", labyrintti));
+    }
 }
 
