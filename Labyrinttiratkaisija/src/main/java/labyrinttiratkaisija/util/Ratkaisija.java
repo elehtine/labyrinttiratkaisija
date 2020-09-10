@@ -1,5 +1,9 @@
 package labyrinttiratkaisija.util;
 
+/**
+ * Luokka joka tarkistaa onko ratkaisu oikein
+ * Sisaltaa vakiomuuttujat jokaiselle neljalle suunnalle
+ */
 public class Ratkaisija {
 
     public static final String OIKEA = "OIKEA";
@@ -7,6 +11,14 @@ public class Ratkaisija {
     public static final String VASEN = "VASEN";
     public static final String YLOS = "YLOS";
 
+    /**
+     * Kertoo onko labyrintti ratkaistu oikein
+     *
+     * @param   reitti  Labyrintissa kuljettu reitti, esim. "ALAS ALAS OIKEA OIKEA YLOS YLOS"
+     * @param   labyrintti  Kuvaa labyrintin, '.' on kaytavaa, '#' on seinaa, l-kirjain on lahto ja m-kirjain on maali
+     *
+     * @return  Palauttaa paattyyko reitti maaliin
+     */
     public static boolean ratkaise(String reitti, char[][] labyrintti) {
         if (labyrintti == null) {
             return false;

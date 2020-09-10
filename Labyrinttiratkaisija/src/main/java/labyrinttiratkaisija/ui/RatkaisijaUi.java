@@ -10,12 +10,20 @@ import javafx.scene.shape.Rectangle;
 
 import labyrinttiratkaisija.util.Labyrintti;
 
+/**
+ * Kayttoliittyman muodostava luokka joka tulee kaynnistamaan muun tarvittavan koodin
+ */
 public class RatkaisijaUi extends Application {
 
+    /**
+     * Kayttoliittyman nayttava metodi
+     *
+     * @param   ikkuna   Ikkuna jonka sisalle kayttoliittyma luodaan
+     */
     @Override
     public void start(Stage ikkuna) {
         GridPane ruudukko = new GridPane();
-        
+
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrintti1.txt");
         if (labyrintti != null) {
             for (int i = 0; i < labyrintti.length; ++i) {
@@ -41,6 +49,9 @@ public class RatkaisijaUi extends Application {
         ikkuna.show();
     }
 
+    /**
+     * Metodi jota kaytetaan kayttoliittyman kaynnistamiseen
+     */
     public static void main(String[] args) {
         launch(args);
     }
