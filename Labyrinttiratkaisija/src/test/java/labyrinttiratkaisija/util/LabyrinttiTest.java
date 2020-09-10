@@ -22,10 +22,19 @@ public class LabyrinttiTest {
     }
 
     /**
-     * Lue onnistuneesti labyrintti tiedostosta
+     * Lue epaonnistuneesti vaarassa formaatissa oleva labyrintti
      */
     @Test
-    public void lueLabyrinttiTiedostostaEpaonnistuneesti() {
+    public void lueLabyrinttiVaarassaFormaatissa() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiVaaraFormaatti.txt");
+        assertFalse(labyrintti != null);
+    }
+
+    /**
+     * Lue epaonnistuneesti labyrintti tiedostosta jota ei ole
+     */
+    @Test
+    public void lueLabyrinttiOlemattomastaTiedostosta() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiEiOlemassa.txt");
         assertFalse(labyrintti != null);
     }

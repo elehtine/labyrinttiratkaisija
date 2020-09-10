@@ -14,7 +14,7 @@ import labyrinttiratkaisija.util.Labyrintti;
 
 public class RatkaisijaTest {
     /**
-     * Testaa yhden ruudun liikkumista vasemmalle lahdosta maaliin
+     * Yhden ruudun liikkumista vasemmalle lahdosta maaliin
      */
     @Test
     public void yksiVasemmalle() {
@@ -24,13 +24,63 @@ public class RatkaisijaTest {
     }
 
     /**
-     * Testaa yhden ruudun liikkumista oikealle lahdosta kun maali olisikin vasemmalla
+     * Yhden ruudun liikkumista oikealle lahdosta kun maali olisikin vasemmalla
      */
     @Test
     public void yksiVasemmalleEpaonnistuu() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
         assertFalse(labyrintti == null);
         assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+    }
+
+    /**
+     * Lyhyen labyrintin ratkaisu oikein
+     */
+    @Test
+    public void lyhytLabyrintti() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(labyrintti == null);
+        assertTrue(Ratkaisija.ratkaise("OIKEA OIKEA ALAS ALAS VASEN VASEN", labyrintti));
+    }
+
+    /**
+     * Lyhyessa labyrintissa liikkumista mutta ei maaliin asti
+     */
+    @Test
+    public void lyhytLabyrinttiEiMaaliin() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(labyrintti == null);
+        assertFalse(Ratkaisija.ratkaise("OIKEA OIKEA ALAS", labyrintti));
+    }
+
+    /**
+     * Lyhyessa labyrintissa liikkuminen seinan lapi
+     */
+    @Test
+    public void lyhytLabyrinttiSeinanLapi() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(labyrintti == null);
+        assertFalse(Ratkaisija.ratkaise("ALAS ALAS", labyrintti));
+    }
+
+    /**
+     * Spiraalilabyrintin ratkaisu
+     */
+    @Test
+    public void spiraaliLabyrintti() {
+        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiSpiraali.txt");
+        assertFalse(labyrintti == null);
+        assertTrue(Ratkaisija.ratkaise(
+                    "OIKEA OIKEA OIKEA OIKEA ALAS ALAS ALAS ALAS VASEN VASEN VASEN VASEN YLOS YLOS OIKEA OIKEA",
+                    labyrintti));
+    }
+
+    /**
+     * Olemattoman labyrintin ratkaisu palauttaa false
+     */
+    @Test
+    public void olematonLabyrinttiEpaonnistuu() {
+        assertFalse(Ratkaisija.ratkaise("OIKEA ALAS OIKEA YLOS", null));
     }
 }
 
