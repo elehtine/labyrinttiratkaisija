@@ -5,17 +5,6 @@ Työni koodi ja dokumentaatio on suomeksi. Versionhallinta on englanniksi. Opint
 ## Kuvaus
 Työni käsittelee labyrinttien ratkaisuja. Tarkoitus on ratkaista sekä labyrinttejä jossa tietää vaan reitit joissa on käynyt, sekä labyrintteja joista tietää kaikki reitit. Teen jonkin UI:n jolla yritän havainnollistaa miten labyrintti ratkaistaan tietyllä tavalla.
 
-# Algoritmit
-Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista joissa liikutaan labyrintissa:
- - seinän seuraaminen
- - satunnainen liikkuminen
- - Tremauxin menetelmä
-
-ja algoritmeista joissa lähdetään samanaikaisesti moneen suuntaan tai tunnetaan labyrintti etukäteen:
- - leveyshaku
- - leveyshaku jollakin heuristiikalla
- - umpikujien täyttö
-
 ## Syöte
 Lisäksi ohjelman kannalta taitaa olla järkevää toteuttaa labyrinttien luomisen hoitavia algoritmeja.
 
@@ -35,4 +24,24 @@ Esimerkki:
 ``9  7 12``  
 ``0  8  0``
 
-Tulen varmaan käyttämään ainakin ensimmäistä tapaa
+Tulen käyttämään ainakin ensimmäistä tapaa
+
+## Algoritmit
+
+### Labyrinttien ratkaisu
+Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista joissa liikutaan labyrintissa:
+ - seinän seuraaminen
+ - satunnainen liikkuminen
+ - Tremauxin menetelmä
+
+ja algoritmeista joissa lähdetään samanaikaisesti moneen suuntaan tai tunnetaan labyrintti etukäteen:
+ - leveyshaku
+ - leveyshaku jollakin heuristiikalla
+ - umpikujien täyttö
+
+### Labyrinttien luonti
+Tulen aluksi generoimaan labyrintteja siten, että ne tallentuvat yllä kuvatulla ensimmäisellä tavalla. Kaikki ruudut joiden x ja y koordinaatit ovat parillisia tulee olemaan aluksi käytäviä. Tämä helpottaa labyrinttien luomista. Näiden käytävien välissä olevat ruudut joko yhdistää käytävät tai toimivat seininä. Sen sijaan ruudut joiden x ja y koordinaatit ovat parittomia tulevat aina olemaan seinämää. Alueen ympäri kulkee aina seinämä. Algoritmeilla tullaan luomaan varmaan pelkästään labyrintteja joissa ei ole syklejä. Syklit tullaan lisäämään jälkikäteen näillä näkymin.  
+Tulen toteuttamaan seuraavienlaisia algoritmeja labyrinttien luomiseen:  
+ - Syvyyshakuun perustuva, lisätään reittejä uuden reitin perään kunnes tulee seinämä vastaan. Tämän jälkeen peruutetaan ja jatketaan muualla
+ - Kruskalin algoritmiin perustuva luonti, lisätään labyrinttiin seinämiä satunnaisessa järjestyksessä siten, että ei tule syklejä
+ - Primin algoritmiin perustuva luonti. Samankaltainen kuin edellinen, mutta lähtee alusta ja kaikki seinämät lähtevät yhtenäisestä alueesta
