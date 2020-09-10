@@ -10,7 +10,7 @@ public class Main {
     /**
      * Sovelluksen kaynnistava main metodi
      */
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         RatkaisijaUi.main(args);
     }
 

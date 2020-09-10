@@ -45,7 +45,9 @@ public class Ratkaisija {
                 }
             }
         }
-        if (lahtoX == -1 || lahtoY == -1 || maaliX == -1 || maaliY == -1) return false;
+        if (lahtoX == -1 || lahtoY == -1 || maaliX == -1 || maaliY == -1) {
+            return false;
+        }
 
         int sijaintiX = lahtoX;
         int sijaintiY = lahtoY;
@@ -66,7 +68,9 @@ public class Ratkaisija {
                 --sijaintiY;
             }
         }
-        if (sijaintiX == maaliX && sijaintiY == maaliY) return true;
+        if (sijaintiX == maaliX && sijaintiY == maaliY) {
+            return true;
+        }
         return false;
     }
 
