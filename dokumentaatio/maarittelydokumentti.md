@@ -6,12 +6,12 @@ Työni koodi ja dokumentaatio on suomeksi. Versionhallinta on englanniksi. Opint
 Työni käsittelee labyrinttien ratkaisuja. Tarkoitus on ratkaista sekä labyrinttejä jossa tietää vaan reitit joissa on käynyt, sekä labyrintteja joista tietää kaikki reitit. Teen jonkin UI:n jolla yritän havainnollistaa miten labyrintti ratkaistaan tietyllä tavalla.
 
 # Algoritmit
-Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista ilman labyrintin tuntemusta:
+Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista joissa liikutaan labyrintissa:
  - seinän seuraaminen
  - satunnainen liikkuminen
  - Tremauxin menetelmä
 
-ja algoritmeista labyrintin tuntemalla:
+ja algoritmeista joissa lähdetään samanaikaisesti moneen suuntaan tai tunnetaan labyrintti etukäteen:
  - leveyshaku
  - leveyshaku jollakin heuristiikalla
  - umpikujien täyttö
