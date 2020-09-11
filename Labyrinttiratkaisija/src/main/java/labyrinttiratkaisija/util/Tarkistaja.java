@@ -4,7 +4,7 @@ package labyrinttiratkaisija.util;
  * Luokka joka tarkistaa onko ratkaisu oikein
  * Sisaltaa vakiomuuttujat jokaiselle neljalle suunnalle
  */
-public class Ratkaisija {
+public class Tarkistaja {
 
     public static final String OIKEA = "OIKEA";
     public static final String ALAS = "ALAS";

@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Scanner;
 import java.nio.file.Paths;
 
-import labyrinttiratkaisija.util.Ratkaisija;
+import labyrinttiratkaisija.util.Tarkistaja;
 import labyrinttiratkaisija.util.Labyrintti;
 
 /**

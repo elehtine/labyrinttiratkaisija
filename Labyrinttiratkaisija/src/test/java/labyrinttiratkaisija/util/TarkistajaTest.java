@@ -6,13 +6,13 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import labyrinttiratkaisija.util.Ratkaisija;
+import labyrinttiratkaisija.util.Tarkistaja;
 import labyrinttiratkaisija.util.Labyrintti;
 
 /**
  * Yksikkotesteja labyrintin ratkaisuntarkastaja luokalle
  */
-public class RatkaisijaTest {
+public class TarkistajaTest {
     /**
      * Yhden ruudun liikkuminenvasemmalle lahdosta maaliin
      */
@@ -20,7 +20,7 @@ public class RatkaisijaTest {
     public void yksiVasemmalle() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
         assertFalse(labyrintti == null);
-        assertTrue(Ratkaisija.ratkaise("VASEN", labyrintti));
+        assertTrue(Tarkistaja.ratkaise("VASEN", labyrintti));
     }
 
     /**
@@ -30,7 +30,7 @@ public class RatkaisijaTest {
     public void yksiVasemmalleEpaonnistuu() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("OIKEA", labyrintti));
     }
 
     /**
@@ -40,7 +40,7 @@ public class RatkaisijaTest {
     public void lyhytLabyrintti() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
         assertFalse(labyrintti == null);
-        assertTrue(Ratkaisija.ratkaise("OIKEA OIKEA ALAS ALAS VASEN VASEN", labyrintti));
+        assertTrue(Tarkistaja.ratkaise("OIKEA OIKEA ALAS ALAS VASEN VASEN", labyrintti));
     }
 
     /**
@@ -50,7 +50,7 @@ public class RatkaisijaTest {
     public void lyhytLabyrinttiEiMaaliin() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("OIKEA OIKEA ALAS", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("OIKEA OIKEA ALAS", labyrintti));
     }
 
     /**
@@ -60,7 +60,7 @@ public class RatkaisijaTest {
     public void lyhytLabyrinttiSeinanLapi() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("ALAS ALAS", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("ALAS ALAS", labyrintti));
     }
 
     /**
@@ -70,7 +70,7 @@ public class RatkaisijaTest {
     public void spiraaliLabyrintti() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiSpiraali.txt");
         assertFalse(labyrintti == null);
-        assertTrue(Ratkaisija.ratkaise(
+        assertTrue(Tarkistaja.ratkaise(
                     "OIKEA OIKEA OIKEA OIKEA ALAS ALAS ALAS ALAS VASEN VASEN VASEN VASEN YLOS YLOS OIKEA OIKEA",
                     labyrintti));
     }
@@ -80,7 +80,7 @@ public class RatkaisijaTest {
      */
     @Test
     public void olematonLabyrinttiEpaonnistuu() {
-        assertFalse(Ratkaisija.ratkaise("OIKEA ALAS OIKEA YLOS", null));
+        assertFalse(Tarkistaja.ratkaise("OIKEA ALAS OIKEA YLOS", null));
     }
 
     /**
@@ -90,7 +90,7 @@ public class RatkaisijaTest {
     public void labyrinttiEiMaalia() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiEiMaalia.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("VASEN", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("VASEN", labyrintti));
     }
 
     /**
@@ -100,7 +100,7 @@ public class RatkaisijaTest {
     public void labyrinttiKaksiLahtoa() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiLahtoa.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("OIKEA", labyrintti));
     }
 
     /**
@@ -110,7 +110,7 @@ public class RatkaisijaTest {
     public void labyrinttiKaksiMaalia() {
         char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiMaalia.txt");
         assertFalse(labyrintti == null);
-        assertFalse(Ratkaisija.ratkaise("OIKEA", labyrintti));
+        assertFalse(Tarkistaja.ratkaise("OIKEA", labyrintti));
     }
 
 }
