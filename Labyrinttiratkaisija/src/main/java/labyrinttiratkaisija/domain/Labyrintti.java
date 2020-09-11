@@ -8,6 +8,87 @@ import java.nio.file.Paths;
  */
 public class Labyrintti {
 
+    private int lahtoX;
+    private int lahtoY;
+    private int maaliX;
+    private int maaliY;
+
+    private int leveys;
+    private int korkeus;
+
+    boolean[][] labyrintti;
+
+    public Labyrintti(char[][] kartta) {
+        leveys = kartta.length;
+        korkeus = kartta[0].length;
+        labyrintti = new boolean[leveys][korkeus];
+        for (int i = 0; i < leveys; ++i) {
+            for (int j = 0; j < korkeus; ++j) {
+                if (kartta[i][j] == '#') {
+                    labyrintti[i][j] = false;
+                } else if (kartta[i][j] == 'l') {
+                    labyrintti[i][j] = true;
+                    lahtoX = i;
+                    lahtoY = j;
+                } else if (kartta[i][j] == 'm') {
+                    labyrintti[i][j] = true;
+                    maaliX = i;
+                    maaliY = j;
+                } else if (kartta[i][j] == '.') {
+                    labyrintti[i][j] = true;
+                }
+            }
+        }
+    }
+
+    public int getLahtoX() {
+        return lahtoX;
+    }
+
+    public int getLahtoY() {
+        return lahtoY;
+    }
+
+    public int getMaaliX() {
+        return maaliX;
+    }
+
+    public int getMaaliY() {
+        return maaliY;
+    }
+
+    public int getLeveys() {
+        return leveys;
+    }
+
+    public int getKorkeus() {
+        return korkeus;
+    }
+
+    public boolean onkoKaytava(int x, int y) {
+        return labyrintti[x][y];
+    }
+
+    @Override
+    public String toString() {
+        String vastaus = "";
+        for (int i = 0; i < korkeus; ++i) {
+            for (int j = 0; j < leveys; ++j) {
+                if (i == lahtoY && j == lahtoX) {
+                    vastaus += "l";
+                } else if (i == maaliY && j == maaliX) {
+                    vastaus += "m";
+                } else if (labyrintti[j][i]) {
+                    vastaus += ".";
+                } else {
+                    vastaus += "#";
+                }
+            }
+            vastaus += "\n";
+        }
+        return vastaus;
+    }
+
     /**
      * Metodille annetaan polku ja se palauttaa tiedostossa olevan labyrintin
      *
@@ -20,12 +101,26 @@ public class Labyrintti {
         try (Scanner lukija = new Scanner(Paths.get(polku))) {
             int x = Integer.valueOf(lukija.nextLine());
             int y = Integer.valueOf(lukija.nextLine());
+            boolean lahtoLoytynyt = false;
+            boolean maaliLoytynyt = false;
 
             labyrintti = new char[x][y];
             for (int j = 0; j < y; ++j) {
                 String line = lukija.nextLine();
                 for (int i = 0; i < x; ++i) {
                     labyrintti[i][j] = line.charAt(i);
+                    if (labyrintti[i][j] == 'l') {
+                        if (lahtoLoytynyt) {
+                            return null;
+                        }
+                        lahtoLoytynyt = true;
+                    }
+                    if (labyrintti[i][j] == 'm') {
+                        if (maaliLoytynyt) {
+                            return null;
+                        }
+                        maaliLoytynyt = true;
+                    }
                 }
             }
         } catch (Exception e) {

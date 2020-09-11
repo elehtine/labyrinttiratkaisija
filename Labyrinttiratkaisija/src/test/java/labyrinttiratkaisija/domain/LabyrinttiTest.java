@@ -20,8 +20,8 @@ public class LabyrinttiTest {
      */
     @Test
     public void lueLabyrinttiTiedostosta() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
-        assertTrue(labyrintti != null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
+        assertTrue(kartta != null);
     }
 
     /**
@@ -29,8 +29,8 @@ public class LabyrinttiTest {
      */
     @Test
     public void lueLabyrinttiVaarassaFormaatissa() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiVaaraFormaatti.txt");
-        assertFalse(labyrintti != null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiVaaraFormaatti.txt");
+        assertFalse(kartta != null);
     }
 
     /**
@@ -38,8 +38,8 @@ public class LabyrinttiTest {
      */
     @Test
     public void lueLabyrinttiOlemattomastaTiedostosta() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiEiOlemassa.txt");
-        assertFalse(labyrintti != null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiEiOlemassa.txt");
+        assertFalse(kartta != null);
     }
 }
 

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import labyrinttiratkaisija.util.Labyrintti;
+import labyrinttiratkaisija.domain.Labyrintti;
 import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 
 /**
@@ -25,20 +25,18 @@ public class RatkaisijaUi extends Application {
     public void start(Stage ikkuna) {
         GridPane ruudukko = new GridPane();
 
-        char[][] labyrintti = LuontiSyvyyshaulla.luo(19, 19);
-        //Labyrintti.lueLabyrintti("src/main/resources/labyrintti1.txt");
+        char[][] kartta = LuontiSyvyyshaulla.luo(19, 19);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         if (labyrintti != null) {
-            for (int i = 0; i < labyrintti.length; ++i) {
-                for (int j = 0; j < labyrintti[0].length; ++j) {
+            for (int i = 0; i < labyrintti.getLeveys(); ++i) {
+                for (int j = 0; j < labyrintti.getKorkeus(); ++j) {
                     Rectangle ruutu = new Rectangle(30, 30);
-                    if (labyrintti[i][j] == '.') {
-                        ruutu.setFill(Color.GRAY);
-                    } else if (labyrintti[i][j] == '#') {
-                        ruutu.setFill(Color.BLACK);
-                    } else if (labyrintti[i][j] == 'l') {
+                    if (i == labyrintti.getLahtoX() && j == labyrintti.getLahtoY()) {
                         ruutu.setFill(Color.RED);
-                    } else if (labyrintti[i][j] == 'm') {
+                    } else if (i == labyrintti.getMaaliX() && j == labyrintti.getMaaliY()) {
                         ruutu.setFill(Color.GREEN);
+                    } else if (labyrintti.onkoKaytava(i, j)) {
+                        ruutu.setFill(Color.GRAY);
                     }
                     ruudukko.add(ruutu, i, j);
                 }

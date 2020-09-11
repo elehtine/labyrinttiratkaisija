@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import labyrinttiratkaisija.util.Tarkistaja;
-import labyrinttiratkaisija.util.Labyrintti;
+import labyrinttiratkaisija.domain.Labyrintti;
 
 /**
  * Yksikkotesteja labyrintin ratkaisuntarkastaja luokalle
@@ -18,8 +18,9 @@ public class TarkistajaTest {
      */
     @Test
     public void yksiVasemmalle() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertTrue(Tarkistaja.tarkista("VASEN", labyrintti));
     }
 
@@ -28,8 +29,9 @@ public class TarkistajaTest {
      */
     @Test
     public void yksiVasemmalleEpaonnistuu() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertFalse(Tarkistaja.tarkista("OIKEA", labyrintti));
     }
 
@@ -38,8 +40,9 @@ public class TarkistajaTest {
      */
     @Test
     public void lyhytLabyrintti() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertTrue(Tarkistaja.tarkista("OIKEA OIKEA ALAS ALAS VASEN VASEN", labyrintti));
     }
 
@@ -48,8 +51,9 @@ public class TarkistajaTest {
      */
     @Test
     public void lyhytLabyrinttiEiMaaliin() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertFalse(Tarkistaja.tarkista("OIKEA OIKEA ALAS", labyrintti));
     }
 
@@ -58,8 +62,9 @@ public class TarkistajaTest {
      */
     @Test
     public void lyhytLabyrinttiSeinanLapi() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertFalse(Tarkistaja.tarkista("ALAS ALAS", labyrintti));
     }
 
@@ -68,8 +73,9 @@ public class TarkistajaTest {
      */
     @Test
     public void spiraaliLabyrintti() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiSpiraali.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiSpiraali.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertTrue(Tarkistaja.tarkista(
                     "OIKEA OIKEA OIKEA OIKEA ALAS ALAS ALAS ALAS VASEN VASEN VASEN VASEN YLOS YLOS OIKEA OIKEA",
                     labyrintti));
@@ -88,8 +94,9 @@ public class TarkistajaTest {
      */
     @Test
     public void labyrinttiEiMaalia() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiEiMaalia.txt");
-        assertFalse(labyrintti == null);
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiEiMaalia.txt");
+        assertFalse(kartta == null);
+        Labyrintti labyrintti = new Labyrintti(kartta);
         assertFalse(Tarkistaja.tarkista("VASEN", labyrintti));
     }
 
@@ -98,9 +105,8 @@ public class TarkistajaTest {
      */
     @Test
     public void labyrinttiKaksiLahtoa() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiLahtoa.txt");
-        assertFalse(labyrintti == null);
-        assertFalse(Tarkistaja.tarkista("OIKEA", labyrintti));
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiLahtoa.txt");
+        assertTrue(kartta == null);
     }
 
     /**
@@ -108,9 +114,8 @@ public class TarkistajaTest {
      */
     @Test
     public void labyrinttiKaksiMaalia() {
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiMaalia.txt");
-        assertFalse(labyrintti == null);
-        assertFalse(Tarkistaja.tarkista("OIKEA", labyrintti));
+        char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiKaksiMaalia.txt");
+        assertTrue(kartta == null);
     }
 
 }
