@@ -18,6 +18,11 @@ public class Labyrintti {
 
     boolean[][] labyrintti;
 
+    /**
+     * Labyrintin konstruktori johon annetaan labyrintin merkkijonomuotoinen kartta parametrina
+     *
+     * @param  kartta Kaksiulotteinen lista merkeista jotka kertovat milta labyrintti nayttaa
+     */
     public Labyrintti(char[][] kartta) {
         leveys = kartta.length;
         korkeus = kartta[0].length;
@@ -41,34 +46,79 @@ public class Labyrintti {
         }
     }
 
+    /**
+     * Palauttaa labyrintin lahdon x-koordinaatin
+     *
+     * @return  Labyrintin lahdon x-koordinaatti
+     */
     public int getLahtoX() {
         return lahtoX;
     }
 
+    /**
+     * Palauttaa labyrintin lahdon y-koordinaatin
+     *
+     * @return  Labyrintin lahdon y-koordinaatti
+     */
     public int getLahtoY() {
         return lahtoY;
     }
 
+    /**
+     * Palauttaa labyrintin maalin x-koordinaatin
+     *
+     * @return  Labyrintin maalin x-koordinaatti
+     */
     public int getMaaliX() {
         return maaliX;
     }
 
+    /**
+     * Palauttaa labyrintin maalin y-koordinaatin
+     *
+     * @return  Labyrintin maalin y-koordinaatti
+     */
     public int getMaaliY() {
         return maaliY;
     }
 
+    /**
+     * Palauttaa labyrintin leveyden
+     *
+     * @return  Labyrintin leveys
+     */
     public int getLeveys() {
         return leveys;
     }
 
+    /**
+     * Palauttaa labyrintin korkeuden
+     *
+     * @return  Labyrintin korkeus
+     */
     public int getKorkeus() {
         return korkeus;
     }
 
+
+    /**
+     * Kertoo onko labyrintissa kyseisessa ruudussa kaytavaa vai seinamaa
+     *
+     * @param   x   Labyrintin ruudun x-koordinaatti
+     * @param   y   Labyrintin ruudun y-koordinaatti
+     *
+     * @return  Totuusarvo joka on true kun ruutu on kaytavaa, false kun seinamaa
+     */
     public boolean onkoKaytava(int x, int y) {
         return labyrintti[x][y];
     }
 
+
+    /**
+     * toString metodi labyrintille koodin korjaukseen kaytettavan tulostuksen helpottamiseen
+     *
+     * @return  Palauttaa labyrintin merkkijonona
+     */
     @Override
     public String toString() {
         String vastaus = "";
