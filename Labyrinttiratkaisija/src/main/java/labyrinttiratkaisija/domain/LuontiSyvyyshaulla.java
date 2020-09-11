@@ -20,17 +20,54 @@ public class LuontiSyvyyshaulla {
             return null;
         }
         char[][] labyrintti = new char[x][y];
-        labyrintti[1][1] = 'l';
-        labyrintti[x - 2][y - 2] = 'm';
         for (int i = 0; i < x; ++i) {
-            labyrintti[i][0] = '#';
-            labyrintti[i][y - 1] = '#';
+            for (int j = 0; j < y; ++j) {
+                labyrintti[i][j] = '#';
+            }
         }
-        for (int i = 0; i < y; ++i) {
-            labyrintti[0][i] = '#';
-            labyrintti[x - 1][i] = '#';
-        }
+        labyrintti[1][1] = 'l';
+        labyrintti[2][1] = '.';
+        labyrintti[x - 2][y - 2] = 'm';
+        labyrintti[x - 3][y - 2] = '.';
+        etene(labyrintti, 3, 1);
         return labyrintti;
+    }
+
+    private static void etene(char[][] labyrintti, int x, int y) {
+        labyrintti[x][y] = '.';
+        for (String suunta: suunnatSatunnaisessaJarjestyksessa()) {
+            int i = 2;
+            if (suunta.equals("VASEN") || suunta.equals("YLOS")) {
+                i = -i;
+            }
+            if (suunta.equals("OIKEA") || suunta.equals("VASEN")) {
+                if (x + i > 0 && x + i < labyrintti.length && labyrintti[x + i][y] == '#') {
+                    labyrintti[x + i / 2][y] = '.';
+                    etene(labyrintti, x + i, y);
+                }
+            }
+            if (suunta.equals("ALAS") || suunta.equals("YLOS")) {
+                if (y + i > 0 && y + i < labyrintti[0].length && labyrintti[x][y + i] == '#') {
+                    labyrintti[x][y + i / 2] = '.';
+                    etene(labyrintti, x, y + i);
+                }
+            }
+        }
+    }
+
+    private static String[] suunnatSatunnaisessaJarjestyksessa() {
+        String[] vastaus = "OIKEA ALAS VASEN YLOS".split(" ");
+        for (int i = 0; i < 4; ++i) {
+            int x = satunnainenNumero();
+            String temp = vastaus[i];
+            vastaus[i] = vastaus[x];
+            vastaus[x] = temp;
+        }
+        return vastaus;
+    }
+
+    private static int satunnainenNumero() {
+        return (int) (System.nanoTime() % 4L);
     }
 
 }

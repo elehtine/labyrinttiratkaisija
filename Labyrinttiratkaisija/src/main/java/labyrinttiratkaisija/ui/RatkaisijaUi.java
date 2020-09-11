@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import labyrinttiratkaisija.util.Labyrintti;
+import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 
 /**
  * Kayttoliittyman muodostava luokka joka tulee kaynnistamaan muun tarvittavan koodin
@@ -24,7 +25,8 @@ public class RatkaisijaUi extends Application {
     public void start(Stage ikkuna) {
         GridPane ruudukko = new GridPane();
 
-        char[][] labyrintti = Labyrintti.lueLabyrintti("src/main/resources/labyrintti1.txt");
+        char[][] labyrintti = LuontiSyvyyshaulla.luo(19, 19);
+        //Labyrintti.lueLabyrintti("src/main/resources/labyrintti1.txt");
         if (labyrintti != null) {
             for (int i = 0; i < labyrintti.length; ++i) {
                 for (int j = 0; j < labyrintti[0].length; ++j) {
