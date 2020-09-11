@@ -1,4 +1,4 @@
-package labyrinttiratkaisija.util;
+package labyrinttiratkaisija.domain;
 
 import java.util.Scanner;
 import java.nio.file.Paths;

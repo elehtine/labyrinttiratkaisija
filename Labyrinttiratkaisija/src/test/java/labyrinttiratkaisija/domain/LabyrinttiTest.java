@@ -1,4 +1,4 @@
-package labyrinttiratkaisija.util;
+package labyrinttiratkaisija.domain;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.nio.file.Paths;
 
 import labyrinttiratkaisija.util.Tarkistaja;
-import labyrinttiratkaisija.util.Labyrintti;
+import labyrinttiratkaisija.domain.Labyrintti;
 
 /**
  * Yksikkotesteja labyrinttien tiedostosta lukevalle luokalle

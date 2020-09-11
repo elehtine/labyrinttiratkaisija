@@ -19,7 +19,7 @@ public class Tarkistaja {
      *
      * @return  Palauttaa paattyyko reitti maaliin
      */
-    public static boolean ratkaise(String reitti, char[][] labyrintti) {
+    public static boolean tarkista(String reitti, char[][] labyrintti) {
         if (labyrintti == null) {
             return false;
         }
