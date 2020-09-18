@@ -110,6 +110,9 @@ public class Labyrintti {
      * @return  Totuusarvo joka on true kun ruutu on kaytavaa, false kun seinamaa
      */
     public boolean onkoKaytava(int x, int y) {
+        if (x >= leveys || y >= korkeus || x < 0 || y < 0) {
+            return false;
+        }
         return labyrintti[x][y];
     }
 
