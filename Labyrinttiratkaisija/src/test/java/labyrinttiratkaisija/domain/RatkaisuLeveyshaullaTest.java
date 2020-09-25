@@ -8,12 +8,12 @@ import org.junit.Test;
 
 import labyrinttiratkaisija.util.Tarkistaja;
 import labyrinttiratkaisija.domain.Labyrintti;
-import labyrinttiratkaisija.domain.RatkaisuSyvyyshaulla;
+import labyrinttiratkaisija.domain.RatkaisuLeveyshaulla;
 
 /**
  * Yksikkotesteja labyrintin ratkaisuntarkastaja luokalle
  */
-public class RatkaisuSyvyyshaullaTest {
+public class RatkaisuLeveyshaullaTest {
     /**
      * Yhden ruudun labyrintin ratkaisu
      */
@@ -22,7 +22,7 @@ public class RatkaisuSyvyyshaullaTest {
         char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiVasen.txt");
         assertFalse(kartta == null);
         Labyrintti labyrintti = new Labyrintti(kartta);
-        RatkaisuSyvyyshaulla ratkaisuSyvyyshaulla = new RatkaisuSyvyyshaulla(labyrintti);
+        RatkaisuLeveyshaulla ratkaisuSyvyyshaulla = new RatkaisuLeveyshaulla(labyrintti);
         String ratkaisu = ratkaisuSyvyyshaulla.ratkaisu();
         assertTrue(Tarkistaja.tarkista(ratkaisu, labyrintti));
     }
@@ -35,7 +35,7 @@ public class RatkaisuSyvyyshaullaTest {
         char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiLyhyt.txt");
         assertFalse(kartta == null);
         Labyrintti labyrintti = new Labyrintti(kartta);
-        RatkaisuSyvyyshaulla ratkaisuSyvyyshaulla = new RatkaisuSyvyyshaulla(labyrintti);
+        RatkaisuLeveyshaulla ratkaisuSyvyyshaulla = new RatkaisuLeveyshaulla(labyrintti);
         String ratkaisu = ratkaisuSyvyyshaulla.ratkaisu();
         assertTrue(Tarkistaja.tarkista(ratkaisu, labyrintti));
     }
@@ -48,7 +48,7 @@ public class RatkaisuSyvyyshaullaTest {
         char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrinttiTestiSpiraali.txt");
         assertFalse(kartta == null);
         Labyrintti labyrintti = new Labyrintti(kartta);
-        RatkaisuSyvyyshaulla ratkaisuSyvyyshaulla = new RatkaisuSyvyyshaulla(labyrintti);
+        RatkaisuLeveyshaulla ratkaisuSyvyyshaulla = new RatkaisuLeveyshaulla(labyrintti);
         String ratkaisu = ratkaisuSyvyyshaulla.ratkaisu();
         assertTrue(Tarkistaja.tarkista(ratkaisu, labyrintti));
     }
@@ -61,7 +61,7 @@ public class RatkaisuSyvyyshaullaTest {
         char[][] kartta = Labyrintti.lueLabyrintti("src/main/resources/labyrintti1.txt");
         assertFalse(kartta == null);
         Labyrintti labyrintti = new Labyrintti(kartta);
-        RatkaisuSyvyyshaulla ratkaisuSyvyyshaulla = new RatkaisuSyvyyshaulla(labyrintti);
+        RatkaisuLeveyshaulla ratkaisuSyvyyshaulla = new RatkaisuLeveyshaulla(labyrintti);
         String ratkaisu = ratkaisuSyvyyshaulla.ratkaisu();
         assertTrue(Tarkistaja.tarkista(ratkaisu, labyrintti));
     }

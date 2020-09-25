@@ -2,7 +2,7 @@ package labyrinttiratkaisija.domain;
 
 import labyrinttiratkaisija.domain.Labyrintti;
 
-public class RatkaisuSyvyyshaulla {
+public class RatkaisuLeveyshaulla {
 
     private Labyrintti labyrintti;
     private int leveys;
@@ -19,7 +19,7 @@ public class RatkaisuSyvyyshaulla {
      *
      * @param   labyrintti  Ratkaistava labyrintti
      */
-    public RatkaisuSyvyyshaulla(Labyrintti labyrintti) {
+    public RatkaisuLeveyshaulla(Labyrintti labyrintti) {
         this.labyrintti = labyrintti;
         this.leveys = labyrintti.getLeveys();
         this.korkeus = labyrintti.getKorkeus();
