@@ -37,7 +37,6 @@ Tarkoitus on toteuttaa ainakin osa seuraavista algoritmeista joissa liikutaan la
 ja algoritmeista joissa lähdetään samanaikaisesti moneen suuntaan tai tunnetaan labyrintti etukäteen:
  - leveyshaku
  - leveyshaku jollakin heuristiikalla
- - umpikujien täyttö
 
 ### Labyrinttien luonti
 Tulen aluksi generoimaan labyrintteja siten, että ne tallentuvat yllä kuvatulla ensimmäisellä tavalla. Kaikki ruudut joiden x ja y koordinaatit ovat parillisia tulee olemaan aluksi käytäviä. Tämä helpottaa labyrinttien luomista. Näiden käytävien välissä olevat ruudut joko yhdistää käytävät tai toimivat seininä. Sen sijaan ruudut joiden x ja y koordinaatit ovat parittomia tulevat aina olemaan seinämää. Alueen ympäri kulkee aina seinämä. Algoritmeilla tullaan luomaan varmaan pelkästään labyrintteja joissa ei ole syklejä. Syklit tullaan lisäämään jälkikäteen näillä näkymin.  

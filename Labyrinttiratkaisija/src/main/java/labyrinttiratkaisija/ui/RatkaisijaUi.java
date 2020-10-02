@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 
 import labyrinttiratkaisija.domain.Labyrintti;
 import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
+import labyrinttiratkaisija.domain.LuontiKruskalilla;
 
 /**
  * Kayttoliittyman muodostava luokka joka tulee kaynnistamaan muun tarvittavan koodin
@@ -25,7 +26,7 @@ public class RatkaisijaUi extends Application {
     public void start(Stage ikkuna) {
         GridPane ruudukko = new GridPane();
 
-        char[][] kartta = LuontiSyvyyshaulla.luo(19, 19);
+        char[][] kartta = LuontiKruskalilla.luo(19, 19);
         Labyrintti labyrintti = new Labyrintti(kartta);
         if (labyrintti != null) {
             for (int i = 0; i < labyrintti.getLeveys(); ++i) {

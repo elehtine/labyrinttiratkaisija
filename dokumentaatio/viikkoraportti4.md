@@ -1,4 +1,4 @@
-# Viikkoraportti 3
+# Viikkoraportti 4
 
 ## Projekti
 Lisätty luokka joka ratkaisee labyrintteja seuraamalla aina oikeanpuoleista seinämää. Koodista ei välttämättä näe ideaa miksi se toimii joten selitän sen ainakin tässä.
