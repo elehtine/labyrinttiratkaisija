@@ -22,3 +22,4 @@ Viikkoraportit on tiedostoissa:
  - [viikkoraportti2.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti2.md)
  - [viikkoraportti3.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti3.md)
  - [viikkoraportti4.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti4.md)
+ - [viikkoraportti5.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti5.md)
