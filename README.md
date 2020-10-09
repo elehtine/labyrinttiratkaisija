@@ -5,6 +5,9 @@ Projekti on tehty Helsingin yliopiston kurssia _Aineopintojen harjoitustyö: Tie
 Projekti on tehty Javalla ja siinä on käytössä Maven.
 
 ## Komennot
+
+Koodin saa ajettua konsolista komennolla ```mvn exec:java -Dexec.mainClass="labyrinttirkaisija.Main"```
+
 Testit saa suoritettua komennolla ```mvn test```
 
 Javadocin saa generoitua komennolla ```mvn javadoc:javadoc```
@@ -12,6 +15,8 @@ Javadocin saa generoitua komennolla ```mvn javadoc:javadoc```
 Testikattavuuden saa komennolla ```mvn test jacoco:report```
 
 Checkstylen saa tarkistettua komennolla ```mvn jxr:jxr checkstyle:checkstyle```
+
+Maven-komennot luovat tiedostoja kansioon ```target/site```
 
 ## Dokumentaatio 
 
@@ -23,3 +28,4 @@ Viikkoraportit on tiedostoissa:
  - [viikkoraportti3.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti3.md)
  - [viikkoraportti4.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti4.md)
  - [viikkoraportti5.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti5.md)
+ - [viikkoraportti6.md](https://github.com/elehtine/labyrinttiratkaisija/blob/master/dokumentaatio/viikkoraportti6.md)
