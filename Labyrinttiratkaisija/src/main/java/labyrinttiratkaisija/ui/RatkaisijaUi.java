@@ -14,11 +14,22 @@ import javafx.scene.shape.Rectangle;
 import labyrinttiratkaisija.domain.Labyrintti;
 import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 import labyrinttiratkaisija.domain.LuontiKruskalilla;
+import labyrinttiratkaisija.ui.Reitti;
 
 /**
  * Kayttoliittyman muodostava luokka joka tulee kaynnistamaan muun tarvittavan koodin
  */
 public class RatkaisijaUi extends Application {
+
+    /**
+     * Size of squares in the maze
+     */
+    public static final int SIZE = 30;
+
+    Scene luontiNakyma;
+    Scene ratkaisuNakyma;
+    Labyrintti labyrintti;
+    Stage ikkuna;
 
     /**
      * Kayttoliittyman nayttava metodi
@@ -27,56 +38,70 @@ public class RatkaisijaUi extends Application {
      */
     @Override
     public void start(Stage ikkuna) {
+        this.ikkuna = ikkuna;
+
         Button kruskal = new Button("Kruskalin algoritmi");
         Button syvyyshaku = new Button("Svyyshaku");
         Button takaisinLuomisesta = new Button("Takaisin");
         VBox luontiNapit = new VBox();
-        luontiNapit.getChildren().add(new Label("Valitse algoritmi"));
+        luontiNapit.getChildren().add(new Label("Valitse luontialgoritmi"));
         luontiNapit.getChildren().add(kruskal);
         luontiNapit.getChildren().add(syvyyshaku);
         luontiNapit.getChildren().add(takaisinLuomisesta);
 
-        Scene luontiNakyma = new Scene(luontiNapit);
+        luontiNakyma = new Scene(luontiNapit);
 
-        char[][] kartta = LuontiKruskalilla.luo(19, 19);
-        Labyrintti labyrintti = new Labyrintti(kartta);
-        Scene labyrinttiNakyma = getLabyrinttiNakyma(labyrintti, luontiNakyma, ikkuna);
+
+        Button leveyshaku = new Button("Nopein reitti leveyshaulla");
+        Button seinanSeuraaminen = new Button("Reitti oikeaa seinää seuraamalla");
+        Button takaisinRatkaisemisesta = new Button("Takaisin");
+        VBox ratkaisuNapit = new VBox();
+        ratkaisuNapit.getChildren().add(new Label("Valitse ratkaisualgoritmi"));
+        ratkaisuNapit.getChildren().add(leveyshaku);
+        ratkaisuNapit.getChildren().add(seinanSeuraaminen);
+        ratkaisuNapit.getChildren().add(takaisinRatkaisemisesta);
+
+        ratkaisuNakyma = new Scene(ratkaisuNapit);
+
 
         kruskal.setOnAction((action) -> {
-            Labyrintti l = new Labyrintti(LuontiKruskalilla.luo(19, 19));
-            ikkuna.setScene(getLabyrinttiNakyma(l, luontiNakyma, ikkuna));
+            Labyrintti labyrintti = new Labyrintti(LuontiKruskalilla.luo(19, 19));
+            paivita(labyrintti);
         });
 
         syvyyshaku.setOnAction((action) -> {
-            Labyrintti l = new Labyrintti(LuontiSyvyyshaulla.luo(19, 19));
-            ikkuna.setScene(getLabyrinttiNakyma(l, luontiNakyma, ikkuna));
+            Labyrintti labyrintti = new Labyrintti(LuontiSyvyyshaulla.luo(19, 19));
+            paivita(labyrintti);
         });
 
         takaisinLuomisesta.setOnAction((action) -> {
-            ikkuna.setScene(labyrinttiNakyma);
+            paivita(labyrintti);
         });
 
-        ikkuna.setScene(labyrinttiNakyma);
+
+        leveyshaku.setOnAction((action) -> {
+            /*
+            Scene ratkaisuNakyma = new Scene(ratkaisuNapit);
+            ikkuna.setScene(ratkaisuNakyma);
+            */
+        });
+
+        takaisinRatkaisemisesta.setOnAction((action) -> {
+            paivita(labyrintti);
+        });
+
+
+        char[][] kartta = LuontiKruskalilla.luo(19, 19);
+        labyrintti = new Labyrintti(kartta);
+        paivita(labyrintti);
+
+
         ikkuna.show();
     }
 
-    private Scene getLabyrinttiNakyma(Labyrintti labyrintti, Scene luonti, Stage ikkuna) {
-        GridPane ruudukko = new GridPane();
-        if (labyrintti != null) {
-            for (int i = 0; i < labyrintti.getLeveys(); ++i) {
-                for (int j = 0; j < labyrintti.getKorkeus(); ++j) {
-                    Rectangle ruutu = new Rectangle(30, 30);
-                    if (i == labyrintti.getLahtoX() && j == labyrintti.getLahtoY()) {
-                        ruutu.setFill(Color.RED);
-                    } else if (i == labyrintti.getMaaliX() && j == labyrintti.getMaaliY()) {
-                        ruutu.setFill(Color.GREEN);
-                    } else if (labyrintti.onkoKaytava(i, j)) {
-                        ruutu.setFill(Color.GRAY);
-                    }
-                    ruudukko.add(ruutu, i, j);
-                }
-            }
-        }
+    private void paivita(Labyrintti labyrintti) {
+        this.labyrintti = labyrintti;
+        GridPane ruudukko = getRuudukko(labyrintti);
 
         Button luo = new Button("Luo uusi labyrintti");
         Button ratkaise = new Button("Ratkaise labyrintti");
@@ -90,9 +115,34 @@ public class RatkaisijaUi extends Application {
         Scene labyrinttiNakyma = new Scene(asettelu);
 
         luo.setOnAction((action) -> {
-            ikkuna.setScene(luonti);
+            ikkuna.setScene(luontiNakyma);
         });
-        return labyrinttiNakyma;
+
+        ratkaise.setOnAction((action) -> {
+            ikkuna.setScene(ratkaisuNakyma);
+        });
+
+        ikkuna.setScene(labyrinttiNakyma);
+    }
+
+    private GridPane getRuudukko(Labyrintti labyrintti) {
+        GridPane ruudukko = new GridPane();
+        if (labyrintti != null) {
+            for (int i = 0; i < labyrintti.getLeveys(); ++i) {
+                for (int j = 0; j < labyrintti.getKorkeus(); ++j) {
+                    Rectangle ruutu = new Rectangle(SIZE, SIZE);
+                    if (i == labyrintti.getLahtoX() && j == labyrintti.getLahtoY()) {
+                        ruutu.setFill(Color.RED);
+                    } else if (i == labyrintti.getMaaliX() && j == labyrintti.getMaaliY()) {
+                        ruutu.setFill(Color.GREEN);
+                    } else if (labyrintti.onkoKaytava(i, j)) {
+                        ruutu.setFill(Color.GRAY);
+                    }
+                    ruudukko.add(ruutu, i, j);
+                }
+            }
+        }
+        return ruudukko;
     }
 
     /**

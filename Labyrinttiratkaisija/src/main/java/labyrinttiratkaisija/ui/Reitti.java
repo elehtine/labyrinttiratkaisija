@@ -1,10 +1,10 @@
 package labyrinttiratkaisija.ui;
 
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Color;
-import javafx.animation.AnimationTimer
+import javafx.scene.paint.Color;
+import javafx.animation.AnimationTimer;
 
-import labyrinttiratkaisija.RatkaisijaUI.SIZE;
+import labyrinttiratkaisija.ui.RatkaisijaUi;
 
 public class Reitti extends Rectangle {
 
@@ -12,8 +12,8 @@ public class Reitti extends Rectangle {
     private String[] ohjeet;
     private int indeksi;
 
-    public Reitti(String reitt) {
-        ohjeet = reitti.split();
+    public Reitti(String reitti) {
+        String[] ohjeet = reitti.split(" ");
         setVisible(false);
         setFill(Color.ORANGE);
 
@@ -23,7 +23,7 @@ public class Reitti extends Rectangle {
 
             @Override
             public void start() {
-                lastUpdate = System.nanoTime();
+                edellinen = System.nanoTime();
                 tauko = 1000000;
                 indeksi = 0;
                 super.start();
@@ -39,15 +39,16 @@ public class Reitti extends Rectangle {
                 }
 
                 if (ohjeet[indeksi].equals("OIKEA")) {
-                    setTranslateX(SIZE);
+                    setTranslateX(RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("ALAS")) {
-                    setTranslateY(SIZE);
+                    setTranslateY(RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("VASEN")) {
-                    setTranslateX(-SIZE);
+                    setTranslateX(-RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("YLOS")) {
-                    setTranslateY(-SIZE);
+                    setTranslateY(-RatkaisijaUi.SIZE);
                 }
-            };
+            }
+        };
     }
 
     public void liiku() {
@@ -55,7 +56,7 @@ public class Reitti extends Rectangle {
         animationTimer.start();
     }
 
-    public pysahdy() {
+    public void pysahdy() {
         animationTimer.stop();
         setVisible(false);
     }
