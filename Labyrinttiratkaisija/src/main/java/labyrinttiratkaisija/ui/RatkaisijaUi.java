@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import labyrinttiratkaisija.domain.Labyrintti;
 import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 import labyrinttiratkaisija.domain.LuontiKruskalilla;
+import labyrinttiratkaisija.domain.RatkaisuLeveyshaulla;
 import labyrinttiratkaisija.ui.Reitti;
 
 /**
@@ -29,7 +30,9 @@ public class RatkaisijaUi extends Application {
     Scene luontiNakyma;
     Scene ratkaisuNakyma;
     Labyrintti labyrintti;
+    GridPane ruudukko;
     Stage ikkuna;
+    Reitti reitti;
 
     /**
      * Kayttoliittyman nayttava metodi
@@ -67,11 +70,13 @@ public class RatkaisijaUi extends Application {
         kruskal.setOnAction((action) -> {
             Labyrintti labyrintti = new Labyrintti(LuontiKruskalilla.luo(19, 19));
             paivita(labyrintti);
+            pysaytaReitti();
         });
 
         syvyyshaku.setOnAction((action) -> {
             Labyrintti labyrintti = new Labyrintti(LuontiSyvyyshaulla.luo(19, 19));
             paivita(labyrintti);
+            pysaytaReitti();
         });
 
         takaisinLuomisesta.setOnAction((action) -> {
@@ -80,13 +85,15 @@ public class RatkaisijaUi extends Application {
 
 
         leveyshaku.setOnAction((action) -> {
-            /*
-            Scene ratkaisuNakyma = new Scene(ratkaisuNapit);
-            ikkuna.setScene(ratkaisuNakyma);
-            */
+            pysaytaReitti();
+            paivita(labyrintti);
+            RatkaisuLeveyshaulla ratkaisija = new RatkaisuLeveyshaulla(labyrintti);
+            String ohjeet = ratkaisija.ratkaisu();
+            naytaRatkaisu(ohjeet);
         });
 
         takaisinRatkaisemisesta.setOnAction((action) -> {
+            pysaytaReitti();
             paivita(labyrintti);
         });
 
@@ -101,7 +108,7 @@ public class RatkaisijaUi extends Application {
 
     private void paivita(Labyrintti labyrintti) {
         this.labyrintti = labyrintti;
-        GridPane ruudukko = getRuudukko(labyrintti);
+        getRuudukko(labyrintti);
 
         Button luo = new Button("Luo uusi labyrintti");
         Button ratkaise = new Button("Ratkaise labyrintti");
@@ -125,8 +132,20 @@ public class RatkaisijaUi extends Application {
         ikkuna.setScene(labyrinttiNakyma);
     }
 
-    private GridPane getRuudukko(Labyrintti labyrintti) {
-        GridPane ruudukko = new GridPane();
+    private void naytaRatkaisu(String ohjeet) {
+        reitti = new Reitti(ohjeet);
+        ruudukko.add(reitti, 1, 1);
+        reitti.liiku();
+    }
+
+    private void pysaytaReitti() {
+        if (reitti != null) {
+            reitti.pysahdy();
+        }
+    }
+
+    private void getRuudukko(Labyrintti labyrintti) {
+        ruudukko = new GridPane();
         if (labyrintti != null) {
             for (int i = 0; i < labyrintti.getLeveys(); ++i) {
                 for (int j = 0; j < labyrintti.getKorkeus(); ++j) {
@@ -142,7 +161,6 @@ public class RatkaisijaUi extends Application {
                 }
             }
         }
-        return ruudukko;
     }
 
     /**

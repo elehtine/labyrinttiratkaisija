@@ -15,6 +15,10 @@ public class Reitti extends Rectangle {
     public Reitti(String reitti) {
         String[] ohjeet = reitti.split(" ");
         setVisible(false);
+        setWidth(RatkaisijaUi.SIZE);
+        setHeight(RatkaisijaUi.SIZE);
+        setArcWidth(RatkaisijaUi.SIZE);
+        setArcHeight(RatkaisijaUi.SIZE);
         setFill(Color.ORANGE);
 
         animationTimer = new AnimationTimer() {
@@ -24,7 +28,7 @@ public class Reitti extends Rectangle {
             @Override
             public void start() {
                 edellinen = System.nanoTime();
-                tauko = 1000000;
+                tauko = 300000000;
                 indeksi = 0;
                 super.start();
             }
@@ -36,17 +40,22 @@ public class Reitti extends Rectangle {
                 }
                 if (indeksi >= ohjeet.length) {
                     indeksi = 0;
+                    setTranslateX(0);
+                    setTranslateY(0);
                 }
 
+                edellinen = nykyhetki;
+
                 if (ohjeet[indeksi].equals("OIKEA")) {
-                    setTranslateX(RatkaisijaUi.SIZE);
+                    setTranslateX(getTranslateX() + RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("ALAS")) {
-                    setTranslateY(RatkaisijaUi.SIZE);
+                    setTranslateY(getTranslateY() + RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("VASEN")) {
-                    setTranslateX(-RatkaisijaUi.SIZE);
+                    setTranslateX(getTranslateX() - RatkaisijaUi.SIZE);
                 } else if (ohjeet[indeksi].equals("YLOS")) {
-                    setTranslateY(-RatkaisijaUi.SIZE);
+                    setTranslateY(getTranslateY() - RatkaisijaUi.SIZE);
                 }
+                ++indeksi;
             }
         };
     }
