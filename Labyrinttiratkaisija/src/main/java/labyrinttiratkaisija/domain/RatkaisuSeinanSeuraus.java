@@ -2,6 +2,9 @@ package labyrinttiratkaisija.domain;
 
 import labyrinttiratkaisija.domain.Labyrintti;
 
+/**
+ * Ratkaisee labyrintin seuraamalla oikean puoleista seinamaa
+ */
 public class RatkaisuSeinanSeuraus {
 
     private static final int OIKEA = 0;

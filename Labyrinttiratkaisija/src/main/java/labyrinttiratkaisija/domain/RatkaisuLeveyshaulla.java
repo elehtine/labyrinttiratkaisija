@@ -2,6 +2,9 @@ package labyrinttiratkaisija.domain;
 
 import labyrinttiratkaisija.domain.Labyrintti;
 
+/**
+ * Ratkaisee labyrintin leveyshaulla
+ */
 public class RatkaisuLeveyshaulla {
 
     private Labyrintti labyrintti;

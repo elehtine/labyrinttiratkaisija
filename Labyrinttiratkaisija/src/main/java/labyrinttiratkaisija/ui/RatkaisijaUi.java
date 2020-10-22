@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import labyrinttiratkaisija.domain.Labyrintti;
 import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 import labyrinttiratkaisija.domain.LuontiKruskalilla;
+import labyrinttiratkaisija.domain.LuontiPrimilla;
 import labyrinttiratkaisija.domain.RatkaisuLeveyshaulla;
 import labyrinttiratkaisija.ui.Reitti;
 
@@ -44,11 +45,13 @@ public class RatkaisijaUi extends Application {
         this.ikkuna = ikkuna;
 
         Button kruskal = new Button("Kruskalin algoritmi");
+        Button prim = new Button("Primin algoritmi");
         Button syvyyshaku = new Button("Svyyshaku");
         Button takaisinLuomisesta = new Button("Takaisin");
         VBox luontiNapit = new VBox();
         luontiNapit.getChildren().add(new Label("Valitse luontialgoritmi"));
         luontiNapit.getChildren().add(kruskal);
+        luontiNapit.getChildren().add(prim);
         luontiNapit.getChildren().add(syvyyshaku);
         luontiNapit.getChildren().add(takaisinLuomisesta);
 
@@ -69,6 +72,12 @@ public class RatkaisijaUi extends Application {
 
         kruskal.setOnAction((action) -> {
             Labyrintti labyrintti = new Labyrintti(LuontiKruskalilla.luo(19, 19));
+            paivita(labyrintti);
+            pysaytaReitti();
+        });
+
+        prim.setOnAction((action) -> {
+            Labyrintti labyrintti = new Labyrintti(LuontiPrimilla.luo(19, 19));
             paivita(labyrintti);
             pysaytaReitti();
         });
@@ -98,7 +107,7 @@ public class RatkaisijaUi extends Application {
         });
 
 
-        char[][] kartta = LuontiKruskalilla.luo(19, 19);
+        char[][] kartta = LuontiPrimilla.luo(19, 19);
         labyrintti = new Labyrintti(kartta);
         paivita(labyrintti);
 
