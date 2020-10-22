@@ -6,7 +6,7 @@ Projekti on tehty Javalla ja siinä on käytössä Maven.
 
 ## Komennot
 
-Koodin saa ajettua konsolista komennolla ```mvn exec:java -Dexec.mainClass="labyrinttirkaisija.Main"```
+Koodin saa ajettua konsolista komennolla ```mvn exec:java -Dexec.mainClass="labyrinttiratkaisija.Main"```
 
 Testit saa suoritettua komennolla ```mvn test```
 
