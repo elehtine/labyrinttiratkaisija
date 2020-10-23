@@ -28,7 +28,7 @@ public class Reitti extends Rectangle {
             @Override
             public void start() {
                 edellinen = System.nanoTime();
-                tauko = 300000000;
+                tauko = 100000000;
                 indeksi = 0;
                 super.start();
             }

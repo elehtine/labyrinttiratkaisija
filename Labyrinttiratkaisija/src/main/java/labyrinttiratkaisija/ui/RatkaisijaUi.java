@@ -16,6 +16,7 @@ import labyrinttiratkaisija.domain.LuontiSyvyyshaulla;
 import labyrinttiratkaisija.domain.LuontiKruskalilla;
 import labyrinttiratkaisija.domain.LuontiPrimilla;
 import labyrinttiratkaisija.domain.RatkaisuLeveyshaulla;
+import labyrinttiratkaisija.domain.RatkaisuSeinanSeuraus;
 import labyrinttiratkaisija.ui.Reitti;
 
 /**
@@ -97,6 +98,14 @@ public class RatkaisijaUi extends Application {
             pysaytaReitti();
             paivita(labyrintti);
             RatkaisuLeveyshaulla ratkaisija = new RatkaisuLeveyshaulla(labyrintti);
+            String ohjeet = ratkaisija.ratkaisu();
+            naytaRatkaisu(ohjeet);
+        });
+
+        seinanSeuraaminen.setOnAction((action) -> {
+            pysaytaReitti();
+            paivita(labyrintti);
+            RatkaisuSeinanSeuraus ratkaisija = new RatkaisuSeinanSeuraus(labyrintti);
             String ohjeet = ratkaisija.ratkaisu();
             naytaRatkaisu(ohjeet);
         });
