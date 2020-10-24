@@ -1,6 +1,7 @@
 package labyrinttiratkaisija.domain;
 
 import labyrinttiratkaisija.domain.Labyrintti;
+import labyrinttiratkaisija.util.StringRakentaja;
 
 /**
  * Ratkaisee labyrintin seuraamalla oikean puoleista seinamaa
@@ -39,11 +40,8 @@ public class RatkaisuSeinanSeuraus {
     public String ratkaisu() {
         int leveys = labyrintti.getLeveys();
         int korkeus = labyrintti.getKorkeus();
-        if (leveys > 1000 || korkeus > 1000) {
-            return "";
-        }
 
-        String ratkaisu = "";
+        StringRakentaja ratkaisu = new StringRakentaja();
         int xSijainti = labyrintti.getLahtoX();
         int ySijainti = labyrintti.getLahtoY();
         int suunta = OIKEA;
@@ -59,7 +57,8 @@ public class RatkaisuSeinanSeuraus {
                 } else if (suunta >= 4) {
                     suunta -= 4;
                 }
-                ratkaisu += NOTAATIO[suunta] + " " + NOTAATIO[suunta] + " ";
+                ratkaisu.lisaa(NOTAATIO[suunta] + " ");
+                ratkaisu.lisaa(NOTAATIO[suunta] + " ");
                 if (suunta == OIKEA) {
                     xSijainti += 2;
                 } else if (suunta == ALAS) {
@@ -73,7 +72,7 @@ public class RatkaisuSeinanSeuraus {
             }
 
             if (xSijainti == labyrintti.getMaaliX() && ySijainti == labyrintti.getMaaliY()) {
-                return ratkaisu.trim();
+                return ratkaisu.toString().trim();
             }
         }
     }

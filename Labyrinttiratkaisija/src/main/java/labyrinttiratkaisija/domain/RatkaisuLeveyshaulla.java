@@ -41,9 +41,6 @@ public class RatkaisuLeveyshaulla {
     public String ratkaisu() {
         int leveys = labyrintti.getLeveys();
         int korkeus = labyrintti.getKorkeus();
-        if (leveys > 1000 || korkeus > 1000) {
-            return "";
-        }
 
         xLista[0] = labyrintti.getLahtoX();
         yLista[0] = labyrintti.getLahtoY();

@@ -12,8 +12,8 @@ import labyrinttiratkaisija.domain.RatkaisuSeinanSeuraus;
  */
 public class SuorituskykyTestaus {
 
-    private final int korkeus = 199;
-    private final int leveys = 199;
+    private final int korkeus = 4999;
+    private final int leveys = 4999;
     private final String[] luontiNimet = new String[] { "Kruskal", "Prim", "Syvyyshaku" };
     private final String[] ratkaisuNimet = new String[] { "Leveyshaku", "Seinan seuraaminen" };
 
@@ -42,7 +42,7 @@ public class SuorituskykyTestaus {
             } else if (i == 1) {
                 labyrintit[i] = new Labyrintti(LuontiPrimilla.luo(leveys, korkeus));
             } else if (i == 2) {
-                labyrintit[i] = new Labyrintti(LuontiSyvyyshaulla.luo(leveys, korkeus));
+                labyrintit[i] = new Labyrintti(LuontiSyvyyshaulla.luo(199, 199));
             }
 
             loppu = System.nanoTime();
@@ -75,7 +75,8 @@ public class SuorituskykyTestaus {
         }
 
         String vastaus = "";
-        vastaus += "Labyrinttien korkeus: \t " + korkeus + "\nLabyrinttien leveys: \t " + leveys + "\n\n";
+        vastaus += "Labyrinttien korkeus: \t " + korkeus + "\nLabyrinttien leveys: \t " + leveys + "\n";
+        vastaus += "Leveyshaulla luomisessa tulee stack overflow joten siina leveys ja korkeus on 199. \n\n";
 
         vastaus += "Luomiseen kulunut aika: \n";
         for (int i = 0; i < 3; ++i) {
@@ -87,13 +88,14 @@ public class SuorituskykyTestaus {
         for (int i = 0; i < 3; ++i) {
             vastaus += "\t" + luontiNimet[i];
         }
-        vastaus += "\n"
+        vastaus += "\n";
 
         for (int i = 0; i < 2; ++i) {
             vastaus += ratkaisuNimet[i];
             for (int j = 0; j < 3; ++j) {
-                vastaus += "\t" + ajatRatkaisu[j][i] / 1e9 + "\n";
+                vastaus += "\t" + ajatRatkaisu[j][i] / 1e9;
             }
+            vastaus += "\n";
         }
 
         vastaus += "\n";
