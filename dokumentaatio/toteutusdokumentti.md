@@ -1,5 +1,13 @@
 # Toteutusdokumentti
 
+## Aikavaativuus
+
+Taulukossa n on leveys ja m on korkeus
+
+| Algoritmi     | Seinän seuraaminen | Leveyshaku | Syvyyshaku | Prim  | Kruskal          |
+| ------------- | ------------------ | ---------- | ---------- | ----- | ---------------- |
+| Aikavaativuus | O(nm)              | O(nm)      | O(nm)      | O(nm) | O(nm log(nm) )   |
+
 ## Tiedostorakenne
 Ohjelmassa on kansiot domain, ui ja util.
 
