@@ -31,3 +31,6 @@ Ratkaisemiseen kulunut aika:
 Leveyshaku	2.935082097	0.764252711	0.002969565
 Seinan seuraaminen	0.986995174	0.592995235	0.001566106
 ```
+
+## Toistaminen
+Kloonaa projekti omalle koneelle. Mene komentorivillä oikeaan kansioon [Labyrinttiratkaisija](https://github.com/elehtine/labyrinttiratkaisija/tree/master/Labyrinttiratkaisija) ja aja komento ```mvn exec:java -Dexec.mainClass="labyrinttiratkaisija.util.SuorituskykyTestaus"```.
