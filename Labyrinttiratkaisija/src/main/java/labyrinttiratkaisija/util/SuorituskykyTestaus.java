@@ -76,7 +76,7 @@ public class SuorituskykyTestaus {
 
         String vastaus = "";
         vastaus += "Labyrinttien korkeus: \t " + korkeus + "\nLabyrinttien leveys: \t " + leveys + "\n";
-        vastaus += "Leveyshaulla luomisessa tulee stack overflow joten siina leveys ja korkeus on 199. \n\n";
+        vastaus += "Leveyshaulla luomisessa tulisi stack overflow joten siina leveys ja korkeus on 199. \n\n";
 
         vastaus += "Luomiseen kulunut aika: \n";
         for (int i = 0; i < 3; ++i) {
@@ -104,8 +104,6 @@ public class SuorituskykyTestaus {
 
     public static void main(String[] args) {
         SuorituskykyTestaus testaus = new SuorituskykyTestaus();
-        testaus.testaa();
-        System.out.println(testaus);
         testaus.testaa();
         System.out.println(testaus);
     }
